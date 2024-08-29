@@ -1,5 +1,24 @@
 <!DOCTYPE html>
 <html lang="fr">
+    <head>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                document.querySelector("#reset-button").addEventListener("click", (e) => {
+                    e.preventDefault();
+                }, false);
+            });
+
+            function startTimer () {
+                const urlParams = new URLSearchParams(window.location.search);
+                const timeout = urlParams.get('timeout') || 10000;
+                console.log("Start timer with timeout ", timeout);
+                setTimeout(() => {
+                    document.getElementById("startTimerBtn").textContent = "Timer ended";
+                    console.log("End timer with timeout", timeout);
+                }, timeout);
+            };
+        </script>
+    </head>
     <title>UUV Test App</title>
     <body>
         <main role="main">
@@ -26,10 +45,11 @@
                     <label for="lname">Last name</label><br>
                     <input type="text" id="lname" name="lname" value="Doe"><br><br>
                     <input type="submit" value="Submit">
-                    <input type="button" value="Reset">
+                    <input type="button" value="Reset" id="reset-button">
                 </fieldset>
             </form>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit"><br>
+            <button id="startTimerBtn" onclick="startTimer()">Start timer</button><br>
             <img src="./uuvFixture.png" class="h-32px m-16px w-32px" alt="UUV Logo fixture">
             <img src="./uuvBody.png" class="h-32px m-16px w-32px" alt="UUV Logo body">
             <img src="./uuvStatus.png" class="h-32px m-16px w-32px" alt="UUV Logo status">
