@@ -1,0 +1,80 @@
+<html lang="fr">
+<head>
+  <title>HTML Grid</title>
+  <style>
+    table.data {
+      border-collapse: collapse;
+      width: 600px;
+      margin: 2rem auto;
+      font-family: sans-serif;
+      background: #fff;
+    }
+    table.data th, table.data td {
+      border: 1px solid #333;
+      padding: 8px 12px;
+      text-align: left;
+    }
+    table.data th {
+      background: #f0f0f0;
+      font-weight: bold;
+      text-align: center;
+    }
+    table.data th[aria-sort] {
+      cursor: pointer;
+    }
+    table.data th[aria-sort="ascending"] span,
+    table.data th[aria-sort="none"] span {
+      outline: none;
+    }
+    table.data tr:nth-child(even) td {
+      background: #fafafa;
+    }
+    table.data tr:hover td {
+      background: #e6f7ff;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1 id="grid-title">HTML Grid Example</h1>
+    <table role="grid" aria-labelledby="grid-title" class="data">
+      <tbody>
+        <tr>
+          <th aria-sort="ascending">
+            <span role="button">Make</span>
+          </th>
+          <th>Model</th>
+          <th aria-sort="none">
+            <span role="button">Price</span>
+          </th>
+        </tr>
+        <tr>
+          <td role="gridcell">Toyota</td>
+          <td role="gridcell">Celica</td>
+          <td role="gridcell">35000</td>
+        </tr>
+        <tr>
+          <td role="gridcell">Ford</td>
+          <td role="gridcell">Mondeo</td>
+          <td role="gridcell">32000</td>
+        </tr>
+        <tr>
+          <td role="gridcell">Porsche</td>
+          <td role="gridcell">Boxster</td>
+          <td role="gridcell">72000</td>
+        </tr>
+        <tr>
+          <td role="gridcell">BMW</td>
+          <td role="gridcell">M50</td>
+          <td role="gridcell">60000</td>
+        </tr>
+        <tr>
+          <td role="gridcell">Aston Martin</td>
+          <td role="gridcell">DBX</td>
+          <td role="gridcell">190000</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>
