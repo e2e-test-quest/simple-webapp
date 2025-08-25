@@ -4,13 +4,8 @@
   <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      // Row Data Interface
-
-      // Grid API: Access to Grid API methods
-      let gridApi;
-
-      // Grid Options: Contains all of the grid configurations
-      const gridOptions = {
+      // basic AG Grid setup
+      const basicAGGridOptions = {
         defaultColDef: {
           flex: 1,
           floatingFilter: true,
@@ -34,16 +29,44 @@
           { field: "electric" },
         ],
       };
-      // Create Grid: Create new grid within the #myGrid div, using the Grid Options object
-      gridApi = agGrid.createGrid(document.querySelector("#myGrid"), gridOptions);
-      gridApi.setGridAriaProperty('label', 'AG Grid Example');
+      const basicAGGridApi = agGrid.createGrid(document.querySelector("#basicAGGrid"), basicAGGridOptions);
+      basicAGGridApi.setGridAriaProperty('label', 'AG Grid Example');
+
+      // Editable ag Grid setup
+      const editableAGGridOptions = {
+        defaultColDef: {
+          flex: 1,
+          floatingFilter: true,
+          filter: true
+        },
+
+        // Data to be displayed
+        rowData: [
+          { make: "Tesla", model: "Model Y", price: 64950, electric: true },
+          { make: "Ford", model: "F-Series", price: 33850, electric: false },
+          { make: "Toyota", model: "Corolla", price: 29600, electric: false },
+          { make: "Mercedes", model: "EQA", price: 48890, electric: true },
+          { make: "Fiat", model: "500", price: 15774, electric: false },
+          { make: "Nissan", model: "Juke", price: 20675, electric: false },
+        ],
+        // Columns to be displayed (Should match rowData properties)
+        columnDefs: [
+          { field: "make", editable: true },
+          { field: "model", editable: true },
+          { field: "price", editable: true },
+          { field: "electric", editable: true },
+        ],
+      };
+      const editableAGGridApi = agGrid.createGrid(document.querySelector("#editableAGGrid"), editableAGGridOptions);
+      editableAGGridApi.setGridAriaProperty('label', 'Editable AG Grid Example');
     });
   </script>
 </head>
 <body>
   <main>
     <h1 id="grid-title">AG Grid Example</h1>
-    <div id="myGrid" style="height: 500px"></div>
+    <div id="basicAGGrid" style="height: 375px"></div>
+    <div id="editableAGGrid" style="padding-top: 32px; height: 375px"></div>
   </main>
 </body>
 </html>
